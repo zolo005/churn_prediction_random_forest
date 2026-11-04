@@ -1,6 +1,6 @@
 # Customer churn: model comparison
 
-Compare a majority baseline, balanced logistic regression, and balanced random forest on the same customer data. The original exploratory work is in `main.ipynb`; the reproducible workflow is `train.py`.
+Compare a majority baseline, balanced logistic regression, balanced random forest, and XGBoost on the same customer data. The original exploratory work is in `main.ipynb`; the reproducible workflow is `train.py`.
 
 ## Run
 
@@ -9,7 +9,7 @@ Use Python 3.11 or newer. Create a virtual environment, install `requirements.tx
 ## What happens
 
 1. Reserve a stratified 20% holdout with seed 42.
-2. Compare models using identical five-fold stratified splits of the training portion.
+2. Compare four models using identical five-fold stratified splits of the training portion.
 3. Fit imputation, scaling, and one-hot encoding inside each fold. Unknown categories are accepted.
 4. Select the model by mean validation average precision (AP), which evaluates ranking across precision/recall tradeoffs. Report variability across folds.
 5. Fit the selected pipeline on all training rows and evaluate the holdout. Save metrics and the fitted pipeline in `artifacts/`.
@@ -31,3 +31,7 @@ A majority predictor can achieve high accuracy on imbalanced data while catching
 - `artifacts/model.joblib`: complete fitted preprocessing/model pipeline (generated locally, not committed).
 
 Load joblib files only from trusted sources. For prediction, supply the raw feature columns listed in evaluation.json in a pandas DataFrame and call the pipeline's predict or predict_proba method.
+
+## XGBoost comparison
+
+XGBoost starts with 300 depth-3 trees, learning rate 0.05, row/column subsampling 0.8, and L2 regularization 1.0. It uses CPU histogram training and seed 42. This candidate uses unweighted binary logistic loss; class weighting and threshold tuning are future validation experiments, not test-set decisions. The same fold-local preprocessing and AP selection rule apply. This is an initial comparison, not proof of the best possible XGBoost configuration.
