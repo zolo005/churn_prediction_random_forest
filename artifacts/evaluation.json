@@ -1,5 +1,5 @@
 {
-  "selected_model": "random_forest",
+  "selected_model": "xgboost",
   "selection_metric": "training_cv_average_precision",
   "seed": 42,
   "training_rows": 8000,
@@ -7,43 +7,43 @@
   "test_prevalence": 0.204,
   "classification_report": {
     "0": {
-      "precision": 0.9261648745519713,
-      "recall": 0.8115577889447236,
-      "f1-score": 0.8650820220957482,
+      "precision": 0.8856152512998267,
+      "recall": 0.9629396984924623,
+      "f1-score": 0.9226602467649714,
       "support": 1592.0
     },
     "1": {
-      "precision": 0.5041322314049587,
-      "recall": 0.7475490196078431,
-      "f1-score": 0.6021717670286278,
+      "precision": 0.7806691449814126,
+      "recall": 0.5147058823529411,
+      "f1-score": 0.620384047267356,
       "support": 408.0
     },
-    "accuracy": 0.7985,
+    "accuracy": 0.8715,
     "macro avg": {
-      "precision": 0.7151485529784649,
-      "recall": 0.7795534042762834,
-      "f1-score": 0.733626894562188,
+      "precision": 0.8331421981406196,
+      "recall": 0.7388227904227017,
+      "f1-score": 0.7715221470161637,
       "support": 2000.0
     },
     "weighted avg": {
-      "precision": 0.8400702153499807,
-      "recall": 0.7985,
-      "f1-score": 0.8114483300620556,
+      "precision": 0.8642062456108701,
+      "recall": 0.8715,
+      "f1-score": 0.8609959020674579,
       "support": 2000.0
     }
   },
   "confusion_matrix": [
     [
-      1292,
-      300
+      1533,
+      59
     ],
     [
-      103,
-      305
+      198,
+      210
     ]
   ],
-  "test_average_precision": 0.6917660468000961,
-  "test_roc_auc": 0.8609130209872893,
+  "test_average_precision": 0.7303372716086698,
+  "test_roc_auc": 0.8779990639471869,
   "features": [
     "CreditScore",
     "Geography",
