@@ -1,0 +1,61 @@
+{
+  "selected_model": "random_forest",
+  "selection_metric": "training_cv_average_precision",
+  "seed": 42,
+  "training_rows": 8000,
+  "test_rows": 2000,
+  "test_prevalence": 0.204,
+  "classification_report": {
+    "0": {
+      "precision": 0.9261648745519713,
+      "recall": 0.8115577889447236,
+      "f1-score": 0.8650820220957482,
+      "support": 1592.0
+    },
+    "1": {
+      "precision": 0.5041322314049587,
+      "recall": 0.7475490196078431,
+      "f1-score": 0.6021717670286278,
+      "support": 408.0
+    },
+    "accuracy": 0.7985,
+    "macro avg": {
+      "precision": 0.7151485529784649,
+      "recall": 0.7795534042762834,
+      "f1-score": 0.733626894562188,
+      "support": 2000.0
+    },
+    "weighted avg": {
+      "precision": 0.8400702153499807,
+      "recall": 0.7985,
+      "f1-score": 0.8114483300620556,
+      "support": 2000.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      1292,
+      300
+    ],
+    [
+      103,
+      305
+    ]
+  ],
+  "test_average_precision": 0.6917660468000961,
+  "test_roc_auc": 0.8609130209872893,
+  "features": [
+    "CreditScore",
+    "Geography",
+    "Gender",
+    "Age",
+    "Tenure",
+    "Balance",
+    "NumOfProducts",
+    "HasCrCard",
+    "IsActiveMember",
+    "EstimatedSalary",
+    "Card Type",
+    "Point Earned"
+  ]
+}
