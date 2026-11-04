@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import joblib
 import pandas as pd
+from xgboost import XGBClassifier
 from sklearn.compose import ColumnTransformer, make_column_selector
 from sklearn.dummy import DummyClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -31,6 +32,7 @@ def main():
     X = df.drop(columns=['Exited', 'RowNumber', 'CustomerId', 'Surname', 'Complain', 'Satisfaction Score'])
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.2, stratify=y, random_state=SEED)
     models = {
+        'xgboost': XGBClassifier(n_estimators=300, max_depth=3, learning_rate=0.05, subsample=0.8, colsample_bytree=0.8, reg_lambda=1.0, objective='binary:logistic', eval_metric='logloss', tree_method='hist', random_state=SEED, n_jobs=1),
         'majority_baseline': DummyClassifier(strategy='most_frequent'),
         'logistic_regression': LogisticRegression(class_weight='balanced', max_iter=2000, random_state=SEED),
         'random_forest': RandomForestClassifier(n_estimators=100, max_depth=6, criterion='entropy', min_samples_leaf=5, class_weight='balanced', random_state=SEED, n_jobs=1)}
